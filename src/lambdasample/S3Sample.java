@@ -13,6 +13,7 @@ import java.util.UUID;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
@@ -35,6 +36,7 @@ public class S3Sample {
          * credential profile by reading from the credentials file located at
          * (C:\\Users\\rlsg\\.aws\\credentials).
          */
+    	/*
         AWSCredentials credentials = null;
         try {
             credentials = new ProfileCredentialsProvider("default").getCredentials();
@@ -45,8 +47,8 @@ public class S3Sample {
                     "location (C:\\Users\\rlsg\\.aws\\credentials), and is in valid format.",
                     e);
         }
-
-        AmazonS3 s3 = new AmazonS3Client(credentials);
+		*/
+        AmazonS3 s3 = new AmazonS3Client(new DefaultAWSCredentialsProviderChain());
         Region usEast1 = Region.getRegion(Regions.US_EAST_1);
         s3.setRegion(usEast1);
 
